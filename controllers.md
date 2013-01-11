@@ -1,21 +1,21 @@
-## Controllers
+## Controller
 
-One of the huge advantages of the OUYA console is that gamers get to use a *real* controller!  The OUYA controller has:
-- four digital buttons (O, U, Y, and A)
-- a four direction digital pad (D-Pad)
-- two analog joysticks (LS, RS)
-- two digital buttons that activate when the joysticks are pushed straight down (L3, R3)
-- two digital bumper buttons (L1, R1)
-- two analog triggers (L2, R2) 
-- a touchpad, configured to behave as a mouse input (Touchpad)
+Einer der großen Vorteile der OUYA Konsole ist, dass Spieler einen *richtigen* Kontroller benutzen können! Der OUYA Controller hat:
+- vier digitale Buttons (O, U, Y und A)
+- ein Vierweg digital Pad (D-Pad)
+- zwei analoge Joysticks (LS, RS)
+- zwei digitale Buttons die aktiviert werden, wenn man die Joysticks nach unten (in den Controller) drückt (L3, R3)
+- zwei digitale bumper Buttons (L1, R1)
+- zwei analoge Trigger (L2, R2)
+- ein Touchpad, welches so eingestellt ist, dass es sich wie eine Maus verhält (Touchpad)
 
-**Note:** The analog triggers also act as digital buttons, with a threshold of 0.5 for the analog value.
+**Beachte:** Die analogen Trigger funktionieren auch als digitale Buttons, mit einem Schwellenwert von 0.5 für den analogen Wert.
 
-Since controller interfaces are so crucial, we've done some work to make your life easier.
+Da Controller Schnittstellen extrem wichtig sind, haben wir einiges an Arbeit geleistet um dir das Leben einfacher zu gestalten.
 
-##### Constants
+##### Konstanten
 
-The **OuyaController** class contains OUYA-specific constants for buttons and axes. A small selection are shown below.
+Die **OuyaController** Klasse enthält einige OUYA-spezifische Konstanten für Buttons und Achsen. Eine kleine Auswahl siehst du hier.
 ```java
 public static final int BUTTON_O;
 public static final int BUTTON_U;
@@ -23,12 +23,12 @@ public static final int BUTTON_Y;
 public static final int BUTTON_A;
 ```
 
-With these constants in hand, it's totally acceptable to handle input via the standard **onKeyDown**, **onKeyUp**, or **onGenericMotionEvent** methods.
+Mit diesen Konstanten ist es völlig Akzeptabel den Input über die standard **onKeyDown**, **onKeyUp**, oder **onGenericMotionEvent** Methoden zu verarbeiten.
 
-##### Anytime State Querying
+##### Jederzeit den Status abfragen
 
-If you want the extra flexibility of querying the controller state at any time, you can use the rest of the **OuyaController** class.
-First off, this means your activity should forward the **onKeyDown**, **onKeyUp**, or **onGenericMotionEvent** calls to **OuyaController**:
+Wenn du die extra Flexibilität haben möchtest, den Controller Status jederzeit abzufragen, kannst du die restliche **OuyaController** Klasse verwenden. 
+Das bedeutet deine activity sollte alle **onKeyDown**, **onKeyUp**, oder **onGenericMotionEvent** Aufrufe weiterleiten an **OuyaController**:
 
 ```java
 @Override
@@ -50,14 +50,14 @@ public boolean onGenericMotionEvent(MotionEvent event) {
 }
 ```
 
-Once **OuyaController** is getting the events, you can then get an instance of the class in one of two ways: device id, or player number:
+Sobald **OuyaController** die Events empfängt, kannst du eine Instanz der Klasse in einer von zwei Möglichkeiten erhalten: Geräte-ID, oder Spieler Nummer:
 
 ```java
 OuyaController c = OuyaController.getControllerByDeviceId(deviceId);
 OuyaController c = OuyaController.getControllerByPlayer(playerNum);
 ```
 
-Now it's simple to query the button or axis values:
+Jetzt ist es einfach den Button oder Achsen-Wert abzufragen:
 
 ```java
 float axisX = c.getAxisValue(OuyaController.AXIS_LSTICK_X);
@@ -65,4 +65,4 @@ float axisY = c.getAxisValue(OuyaController.AXIS_LSTICK_Y);
 boolean buttonPressed = c.getButton(OuyaController.BUTTON_O);
 ```
 
-With this, you can focus on making a great game instead of on input handling.
+Damit kannst du dich ganz auf das entwickeln eines großartigen Spiels konzentrieren, anstatt auf das korrekte Umgehen mit Input.
