@@ -1,4 +1,4 @@
-## ODK Plan
+## ODK Projektplanung
 
 **Wichtiger Hinweis:** Diese preview Version des ODK ist noch nicht fertig und befindet sich noch in der Enwicklung.
 * **Bezahlungen Sicherheit** - Wir sind immernoch dabei diese Eigenschaften zu implementieren. Deine Testaufrufe unserer payments (Bezahlungs) API werden funktionieren, aber wir werden neue Sicherheitsmerkmale hinzufügen, wenn die Echtgeld-Käufe aktiviert werden.

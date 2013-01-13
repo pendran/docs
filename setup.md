@@ -1,24 +1,24 @@
-## Setup Instructions for the OUYA ODK
+## Installationanleitung für das Ouya Development Kit
 
 ##### MacOS
-Download and install the [Android SDK and tools](http://developer.android.com/sdk/index.html) to your Mac or PC, following the included instructions. 
+Lade dir das [Android SDK und Tools](http://developer.android.com/sdk/index.html) hertuner und installiere es auf deinem Mac oder PC, indem du die beiligende Anleitung befolgst.
 
-Launch the Android SDK Manager by running ([detailed instructions](http://developer.android.com/sdk/installing/adding-packages.html)):
+Starte den Android SDK Manager durch ausführen von ([ausführliche Anleitung](http://developer.android.com/sdk/installing/adding-packages.html)):
 ```bash 
 ./android sdk
 ```
 
-Install these packages:
+Installiere die folgenden Packete:
 
-- **Tools**: Including both Android SDK and Android SDK Platform tools
-- **Android 4.1 (API 16)**: SDK Platform
-- **Android 4.0 (API 14)**: SDK Platform
+- **Tools**: Beinhaltet sowohl das Android SDK als auch die Android SDK Plattform Tools
+- **Android 4.1 (API 16)**: SDK Plattform
+- **Android 4.0 (API 14)**: SDK Plattform
 - **Extras**: Android Support Library
 
 
-Install the Java runtime if you are prompted to do so.
+Installiere die Java-runtime, wenn du dazu aufgefordert wirst.
 
-You will need to add some paths to PATH. Assuming you have put the SDK folder in the location `~/android/android-sdk-macosx`, open a terminal and add the following three lines to your `.bashrc`:
+Du musst einige Pfade zur PATH adden. Angenommen du hast den SDK Ordner an der folgenden Stelle `~/android/android-sdk-macosx`, dann öffne ein Terminal und füge die folgenden drei Zeilen zu deiner `.bashrc` hinzu:
 
 ```bash
 export PATH=$PATH:~/android/android-sdk-macosx/tools
@@ -26,26 +26,26 @@ export PATH=$PATH:~/android/android-sdk-macosx/platform-tools
 export ANDROID_HOME=~/android/android-sdk-macosx
 ```
 
-You may need to adjust your `.bashrc` entries if you have used a custom SDK folder location.
+Möglicherweise musst du diese `.bashrc` Einträge anpassen, sofern du eine eigene SDK Ordner Position genutzt hast. 
 
 
 ##### Windows
-TBD
+Folgt noch.
 
 ##### Eclipse
-TBD
+Folgt noch.
 
-##### Developing with the ODK
-Use the Android API Level 16 (Android 4.1 "Jelly Bean") when developing for the OUYA Console.
+##### Entwickeln mit der ODK
+Nutze die Android API Level 16 (Android 4.1 "Jelly Bean"), wenn du für die OUYA Konsole entwickelst.
 
-In order to use the OUYA API you will need to include `ouya-sdk.jar` in your project libraries, as well as `guava-r09.jar` and `commons-lang-2.6.jar`. These can be found in the `libs` directory. 
+Um die OUYA API nutzen zu können, musst du die `ouya-sdk.jar` in deine Projekt Libraries einbinden, ebenso die `guava-r09.jar` und `commons-lang-2.6.jar`. Diese findest du im `libs` Ordner.
 
-For information on the API commands available, please consult the OUYA API reference documentation.
+Für Informationen bezüglich der API Befehle, wirf bitte einen Blick in die OUYA API Referenzdokumentation.
 
-To run the sample code, open up the project in `iap-sample-app` and follow the instructions in the `README.txt` file.
+Um den Beispielcode laufen zu lassen, öffne das Projekt in `iap-sample-app` und folge den Schritten in der `README.txt` Datei.
 
-For your application or game to be recognized as made for OUYA, you will need to include an OUYA intent category on the manifest entry of your main activity. 
-Use “ouya.intent.category.GAME” or “ouya.intent.category.APP”.
+Damit erkannt wird, dass deine Anwendung oder dein Spiel für die OUYA gemacht ist, musst du eine OUYA intent Kategorie im Manifest Eintrag deiner Hauptaktivität (main activity) hinzufügen.
+Nutze dafür “ouya.intent.category.GAME” oder “ouya.intent.category.APP”.
 
 ```xml
 <activity android:name=".GameActivity" android:label="@string/app_name">
@@ -57,53 +57,53 @@ Use “ouya.intent.category.GAME” or “ouya.intent.category.APP”.
 </activity>
 ```
 
-The application image that is shown in the launcher is embedded inside of the APK itself.  The expected file is in `res/drawable-xhdpi/ouya_icon.png` and the image size must be 732x412 for games or 412x412 for applications.
+Das Anwendungsbild, welches im Launcher angezeigt wird, ist in der APK selbst eingebettet. Die erwartete Datei befindet sich in `res/drawable-xhdpi/ouya_icon.png` und die Bildgröße muss 732x412 für Spiele oder 412x412 für Anwendungen sein.
 
-#### Hardware Substitutes
+#### Hardware Einstellungen
 
-In order to begin developing software before having access to an OUYA console, you may use the Android emulator or a standard Android tablet.
+Um mit der Entwicklung von Software anzufangen, bevor du in Besitz der OUYA Konsole bist, kannst du einen Android Emulator, oder ein standard Android Tablet benutzen.
 
 ##### Software
 
-The OUYA console hardware already includes the OUYA launcher, but when using an emulator or Android tablet, you will need to install the launcher manually. This file is included in the OUYA ODK package.
+Die OUYA Konsolenhardware beinhaltet bereits den OUYA Launcher, aber wenn du einen Emulator, oder Android Tablet verwendest, musst du Launcher manuell installieren. Diese Datei ist ebenfalls im OUYA ODK Packet enthalten:
 
-To install the launcher, run:
+Um den Launcher zu installieren, führe folgendes aus:
 ```bash
 adb install -r ouya-framework.apk
 adb install -r ouya-launcher.apk
 ```
 
-**Note**: If the OUYA launcher is not installed, some ODK features will not work correctly.
+**Beachte**: Wenn der OUYA Launcher nicht installiert ist, werden einige ODK Features nicht korrekt funktionieren.
 
 ##### Emulator
 
-If using the emulator, configure the Android virtual device as follows:
+Wenn du einen Emulator nutzt, dann konfiguriere das Android Virutal Device folgendermaßen:
 
-- **Resolution**: 1920x1080 or 1280x720, as desired
-- **Hardware Back/Home keys**: yes (you will need to add this to the hardware parameters)
-- **D-Pad support**: yes (you will need to add this to the hardware parameters)
-- **Target**: Android 4.1 - API Level 16
+- **Resolution (Auflösung)**: 1920x1080 oder 1280x720, wie gewünscht
+- **Hardware Back/Home keys (Zurück/Home Tasten)**: ja (du musst dies zu den Hardwareparametern hinzufügen)
+- **D-Pad support**: ja (du musst dies zu den Hardwareparametern hinzufügen)
+- **Target (Zielversion)**: Android 4.1 - API Level 16
 - **CPU/ABI**: Intel Atom x86
-- **Device RAM size**: 1024
+- **Device RAM size (Arbeitsspeicher des Gerätes)**: 1024
 
-We recommend the use of the Intel Atom x86 CPU/ABI and Intel's HAXM extensions to ensure the emulator performance is adequate for game development. If you are developing low-level code, you should note that the device is ARM based. Therefore, you should develop for the ARM architecture and use an emulator AVD with the CPU/ABI set to an ARM architecture.
+Wir empfehlen die Benutzung des Intel Atom x86 CPU/ABI und Intel's HAXM Erweiterung um sicherzustellen, dass die Emulator Leistungen ausreichend für die Spieleentwicklung sind. Wenn du low-level Code entwickelst beachte, dass das Gerät auf ARM basiert. Dementsprechend solltest du für die ARM Architektur entwickeln und ein Emulator AVD nutzen, deren CPU/ABI auf ARM Architektur eingestellt ist.
 
-The OUYA console does not have hardware buttons for back or menu, so your games should not rely on the presence of these. Setting the hardware keys emulator property hides the Android navigation bar, enabling the emulator to fill the entire 1920x1080 or 1280x720 screen in the same way the OUYA console does.
+Die OUYA Konsole hat keine Hardware Knöpfe für Zurück oder Menü, also sollten deine Spiele sich auch nicht auf diese beziehen. Das setzen der Hardware Tasten Emulator Eigenschaft versteckt die Android Navigationsbar, woduch der Emulator die kompletten 1920x1080, beziehungsweise 1280x720 nutzen kann, so wie es die OUYA Konsole macht.
 
-**Note**: When developing with the emulator, it is not possible to fully emulate the OUYA controller buttons and features. 
+**Beachte**: Wenn du mit dem Emulator entwickelst, ist es nicht möglich die kompletten OUYA Kontroller Buttons und Feature zu simulieren.
 
 ##### Android Tablet
 
-If using a standard Android tablet, we recommend using a tablet with a usable display resolution as close as possible to 1920x1080 or 1280x720. 
+Wenn du ein standard Android Tablet verwendest, dann empfehlen wir ein Tablet zu nutzen, dessen Display Auflösung so nah wie möglich an 1920x1080 oder 1280x720 heran reicht.
 
-**Note**: The Android navigation bar will consume some of the screen on standard tablets, which will not be the case for the OUYA console.
+**Beachte**: Die Android Navigationsbar wird einen Teil des Bildschirms auf standard Tablets einen Teil des Bildschirms in Anspruch nehmen, was bei der OUYA Konsole nicht der Fall ist.
 
-The OUYA game controller combines a standard controller (two joysticks, a D-Pad, four game buttons, two shoulder buttons, and two triggers) with a touchpad. For testing, we recommend using the Xbox 360 wired USB controller combined with a mouse or touchpad for testing joystick and game button interaction. 
+Der OUYA Controller kombiniert einen standard Controller (zwei Joysticks, ein D-Pad, vier Spiel Buttons, zwei Schulter Buttons und zwei Trigger) mit einem Touchpad. Zum Testen empfehlen wir einen Xbox 360 (Kabel) USB Controller in zusammenarbeit mit einer Maus oder einem Touchpad zu verwenden.
 
-##### Screen Resolution Handing
+##### Bildschirmauflösung
 
-The OUYA console supports 720p or 1080p output only.
+Die OUYA Konsole unterstützt ausschließlich 720p oder 1080p.
 
-For OpenGL-based games, we recommend creating a render buffer of 1920x1080 (if targeting 1080p) or 1280x720 (if targeting 720p). If this does not match the display resolution of your device, the game screen may be windowed or scaled depending on the behavior determined by the device manufacturer.
+Für OpenGL-basierte Spiele empfehlen wir einen Render-Puffer von 1920x1080 (wenn 1080p angestrebt sind), oder 1280x720 (wenn 720p angestrebt sind) zu erzeugen. Wenn dies nicht der Display-Auflösung deines Gerätes entspricht, wird der Spiel Bildschirm vielleicht als Fenster oder skaliert dargestellt, je nach Gerätehersteller definiertem Verhalten.
 
-For games using the Android UI Framework, follow the Android best practices for developing applications for xhdpi-large and tvdpi-large displays. See [developer.android.com](http://developer.android.com) for more information.
+Fpr Spiele die das Android UI Framework nutzen, befolge die Android bewährten Methoden zur Entwicklung von Applikationen für xhdpi-large und tvdpi-large Displays. Besuche [developer.android.com](http://developer.android.com) für weitere Informationen.
